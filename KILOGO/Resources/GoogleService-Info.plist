@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>180539009104-on1upe82bs8mmo02v35bon4hqsgnou0u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.180539009104-on1upe82bs8mmo02v35bon4hqsgnou0u</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBIj8OMd9y0tF6jrzsNpNkZ_7rP2nsoFxw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>180539009104</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.company.KILOGO</string>
+	<key>PROJECT_ID</key>
+	<string>kilogo-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kilogo-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:180539009104:ios:67ee3c75edd68025b34955</string>
+</dict>
+</plist>
