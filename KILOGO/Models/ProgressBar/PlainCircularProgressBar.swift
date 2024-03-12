@@ -30,7 +30,6 @@ class PlainCircularProgressBar: UIView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupLayers()
     }
 
     private func setupLayers() {

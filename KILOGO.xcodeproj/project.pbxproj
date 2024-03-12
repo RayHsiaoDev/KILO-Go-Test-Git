@@ -17,6 +17,7 @@
 		850605572B8C56FD00FA4E85 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850605562B8C56FD00FA4E85 /* CustomLayout.swift */; };
 		850605592B91AEB100FA4E85 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850605582B91AEB100FA4E85 /* CollectionViewFlowLayout.swift */; };
 		8506055B2B9B09FA00FA4E85 /* KcalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506055A2B9B09FA00FA4E85 /* KcalProgressBar.swift */; };
+		8506055D2BA0349D00FA4E85 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506055C2BA0349D00FA4E85 /* CircleProgressBar.swift */; };
 		8510493BDC53CD4E1AA331C2 /* Pods_KILOGO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BF634506759B595E9A0E44 /* Pods_KILOGO.framework */; };
 		F2149C4427424DC8006B5C1A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C4327424DC8006B5C1A /* ARViewController.swift */; };
 		F2149C4827425312006B5C1A /* SKScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2149C4727425312006B5C1A /* SKScene.sks */; };
@@ -117,6 +118,7 @@
 		850605562B8C56FD00FA4E85 /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		850605582B91AEB100FA4E85 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8506055A2B9B09FA00FA4E85 /* KcalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KcalProgressBar.swift; sourceTree = "<group>"; };
+		8506055C2BA0349D00FA4E85 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		DB8570A4D7ED3DBC8BF971C4 /* Pods-KILOGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KILOGO.debug.xcconfig"; path = "Target Support Files/Pods-KILOGO/Pods-KILOGO.debug.xcconfig"; sourceTree = "<group>"; };
 		F2149C4327424DC8006B5C1A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F2149C4727425312006B5C1A /* SKScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKScene.sks; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				F215DCE4276220D2009D76CB /* PlainCircularProgressBar.swift */,
 				F215DCE627628A3B009D76CB /* PlainHorizontalProgressBar.swift */,
 				8506055A2B9B09FA00FA4E85 /* KcalProgressBar.swift */,
+				8506055C2BA0349D00FA4E85 /* CircleProgressBar.swift */,
 			);
 			path = ProgressBar;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				850605432B7CC49D00FA4E85 /* AuthTextFieldType.swift in Sources */,
 				F22A4659274D3E4C004B2012 /* ARImageView.swift in Sources */,
 				F2F74587276F954F008E2D2F /* LevelSkillPageMain.swift in Sources */,
+				8506055D2BA0349D00FA4E85 /* CircleProgressBar.swift in Sources */,
 				8506055B2B9B09FA00FA4E85 /* KcalProgressBar.swift in Sources */,
 				F23996F1273BB2E5007F8ADE /* AppDelegate.swift in Sources */,
 				F23996F3273BB2E5007F8ADE /* SceneDelegate.swift in Sources */,

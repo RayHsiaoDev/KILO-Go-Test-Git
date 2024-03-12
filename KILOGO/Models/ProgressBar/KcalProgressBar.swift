@@ -54,7 +54,7 @@ class KcalProgressBar: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10),
-            image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: rect.width * progress - 25),
+            image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: rect.width * progress - 30),
             image.widthAnchor.constraint(equalToConstant: 70),
             image.heightAnchor.constraint(equalToConstant: 70)
         ])
