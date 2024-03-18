@@ -19,6 +19,8 @@
 		8506055B2B9B09FA00FA4E85 /* KcalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506055A2B9B09FA00FA4E85 /* KcalProgressBar.swift */; };
 		8506055D2BA0349D00FA4E85 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8506055C2BA0349D00FA4E85 /* CircleProgressBar.swift */; };
 		8510493BDC53CD4E1AA331C2 /* Pods_KILOGO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BF634506759B595E9A0E44 /* Pods_KILOGO.framework */; };
+		858013132BA80EB700534318 /* ChooseBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013122BA80EB700534318 /* ChooseBarCell.swift */; };
+		858013152BA82F0800534318 /* ChooseButtonLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013142BA82F0800534318 /* ChooseButtonLine.swift */; };
 		F2149C4427424DC8006B5C1A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C4327424DC8006B5C1A /* ARViewController.swift */; };
 		F2149C4827425312006B5C1A /* SKScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2149C4727425312006B5C1A /* SKScene.sks */; };
 		F2149C4A2742547A006B5C1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C492742547A006B5C1A /* Scene.swift */; };
@@ -119,6 +121,8 @@
 		850605582B91AEB100FA4E85 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8506055A2B9B09FA00FA4E85 /* KcalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KcalProgressBar.swift; sourceTree = "<group>"; };
 		8506055C2BA0349D00FA4E85 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
+		858013122BA80EB700534318 /* ChooseBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBarCell.swift; sourceTree = "<group>"; };
+		858013142BA82F0800534318 /* ChooseButtonLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseButtonLine.swift; sourceTree = "<group>"; };
 		DB8570A4D7ED3DBC8BF971C4 /* Pods-KILOGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KILOGO.debug.xcconfig"; path = "Target Support Files/Pods-KILOGO/Pods-KILOGO.debug.xcconfig"; sourceTree = "<group>"; };
 		F2149C4327424DC8006B5C1A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F2149C4727425312006B5C1A /* SKScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKScene.sks; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				F2F74584276F93DC008E2D2F /* LevelSkillViewController.swift */,
 				F285F759273BB89E009A34AD /* TabBarViewController.swift */,
 				F285F770273BC033009A34AD /* FoodDataViewsController.swift */,
+				858013122BA80EB700534318 /* ChooseBarCell.swift */,
+				858013142BA82F0800534318 /* ChooseButtonLine.swift */,
 			);
 			path = second;
 			sourceTree = "<group>";
@@ -704,7 +710,9 @@
 				F27D8380276FB3700008649B /* LevelSkill3PageModels.swift in Sources */,
 				F246497C273BF7A400E2F2F6 /* PostButtonCollectionViewModel.swift in Sources */,
 				F285F773273BC03D009A34AD /* HomePageViewController.swift in Sources */,
+				858013152BA82F0800534318 /* ChooseButtonLine.swift in Sources */,
 				F285F767273BBF57009A34AD /* RecoverPasswordViewController.swift in Sources */,
+				858013132BA80EB700534318 /* ChooseBarCell.swift in Sources */,
 				F285F76D273BBFF6009A34AD /* CharacterViewController.swift in Sources */,
 				F2C381DD273EE94000BC22C4 /* AuthButton.swift in Sources */,
 				F246497E273BF8E400E2F2F6 /* PostLikeNumberCollectionViewCell.swift in Sources */,

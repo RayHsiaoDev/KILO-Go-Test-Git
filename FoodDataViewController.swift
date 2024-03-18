@@ -9,8 +9,8 @@ import UIKit
  let screenWidth = UIScreen.main.bounds.size.width
  let screenHeight = UIScreen.main.bounds.size.height
 
-class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate {
-
+class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate, UICollectionViewDataSource {
+    
     let waterWave = WaterModel()
     var dataPicker = UIDatePicker()
     let topBarImage = UIImageView()
@@ -19,6 +19,15 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
     let midGetKcalImage = UIImageView()
     let midConsumeKcalImage = UIImageView()
     let midTotalKcalImage = UIImageView()
+    let getKcalLabel = UILabel()
+    let consumeKcalLabel = UILabel()
+    let totalKcalLabel = UILabel()
+    let chooseFoodButton = UIButton()
+    let chooseSportButton = UIButton()
+    var choosePageCollectionView: UICollectionView!
+    let layout = UICollectionViewFlowLayout()
+    let chooseButtonLine = ChooseButtonLine()
+    
     
     static let mid = UIImage(named: "中間圖層")
     let midView = UIImageView(image: mid)
@@ -270,31 +279,42 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
 //        view.addSubview(midPeopleView)
         view.addSubview(midGetKcalImage)
         view.addSubview(midConsumeKcalImage)
-        view.addSubview(midCircle3View)
-        view.addSubview(text1)
-        view.addSubview(text2)
-        view.addSubview(text3)
-        view.addSubview(foodButton)
-        view.addSubview(sportButton)
-        view.addSubview(underline1)
-        view.addSubview(underline2)
-        view.addSubview(breakButton)
-        view.addSubview(lunchButton)
-        view.addSubview(dinnerButton)
-        view.addSubview(elseButton)
-        view.addSubview(sport1Button)
-        view.addSubview(search1Button)
-        view.addSubview(search2Button)
-        view.addSubview(search3Button)
-        view.addSubview(search4Button)
-        view.addSubview(search5Button)
+        view.addSubview(midTotalKcalImage)
+        view.addSubview(getKcalLabel)
+        view.addSubview(consumeKcalLabel)
+        view.addSubview(totalKcalLabel)
+//        view.addSubview(foodButton)
+//        view.addSubview(sportButton)
+        view.addSubview(chooseFoodButton)
+        view.addSubview(chooseSportButton)
+        view.addSubview(chooseButtonLine)
+//        view.addSubview(underline1)
+//        view.addSubview(underline2)
+//        view.addSubview(breakButton)
+//        view.addSubview(lunchButton)
+//        view.addSubview(dinnerButton)
+//        view.addSubview(elseButton)
+//        view.addSubview(sport1Button)
+//        view.addSubview(search1Button)
+//        view.addSubview(search2Button)
+//        view.addSubview(search3Button)
+//        view.addSubview(search4Button)
+//        view.addSubview(search5Button)
         view.addSubview(label)
         
         configureTopBarImage()
         configureDateLabel()
         configureMidImage()
         configureGetKcalBar()
+        configureGetKcalLabel()
         configureConsumeKcalBar()
+        configureConsumeKcalLabel()
+        configureTotalKcalBar()
+        configureTotalKcalLabel()
+        configureChooseFoodButton()
+        configureChooseSportButton()
+        configureCollectionView()
+        configureChooseButtonLine()
         
         waterWave.progress = 0
         waterWave.setUpProgress(waterWave.progress)
@@ -378,9 +398,153 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
             midConsumeKcalImage.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
+    
+    
+    func configureTotalKcalBar() { 
+        midTotalKcalImage.image = UIImage(named: "中間bar1")
+        midTotalKcalImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            midTotalKcalImage.bottomAnchor.constraint(equalTo: midImage.bottomAnchor, constant: -6),
+            midTotalKcalImage.leadingAnchor.constraint(equalTo: midConsumeKcalImage.trailingAnchor, constant: 15),
+            midTotalKcalImage.widthAnchor.constraint(equalToConstant: 110),
+            midTotalKcalImage.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    
+    func configureGetKcalLabel() {
+        getKcalLabel.textAlignment = .center
+        getKcalLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        getKcalLabel.text = "1300\n攝取卡路里"
+        getKcalLabel.numberOfLines = 2
+        getKcalLabel.backgroundColor = .clear
+        
+        getKcalLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            getKcalLabel.topAnchor.constraint(equalTo: midGetKcalImage.topAnchor, constant: 0),
+            getKcalLabel.centerXAnchor.constraint(equalTo: midGetKcalImage.centerXAnchor),
+            getKcalLabel.widthAnchor.constraint(equalToConstant: 80),
+            getKcalLabel.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    
+    func configureConsumeKcalLabel() {
+        consumeKcalLabel.textAlignment = .center
+        consumeKcalLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        consumeKcalLabel.text = "100\n消耗卡路里"
+        consumeKcalLabel.numberOfLines = 2
+        consumeKcalLabel.backgroundColor = .clear
+        
+        consumeKcalLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            consumeKcalLabel.topAnchor.constraint(equalTo: midConsumeKcalImage.topAnchor, constant: 0),
+            consumeKcalLabel.centerXAnchor.constraint(equalTo: midConsumeKcalImage.centerXAnchor),
+            consumeKcalLabel.widthAnchor.constraint(equalToConstant: 80),
+            consumeKcalLabel.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    
+    func configureTotalKcalLabel() {
+        totalKcalLabel.textAlignment = .center
+        totalKcalLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        totalKcalLabel.text = "1200\n總共卡路里"
+        totalKcalLabel.numberOfLines = 2
+        totalKcalLabel.backgroundColor = .clear
+        
+        totalKcalLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            totalKcalLabel.topAnchor.constraint(equalTo: midTotalKcalImage.topAnchor, constant: 0),
+            totalKcalLabel.centerXAnchor.constraint(equalTo: midTotalKcalImage.centerXAnchor),
+            totalKcalLabel.widthAnchor.constraint(equalToConstant: 80),
+            totalKcalLabel.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    
+    func configureChooseFoodButton() {
+        chooseFoodButton.setTitle("飲食", for: .normal)
+        chooseFoodButton.setTitleColor(.black, for: .normal)
+        chooseFoodButton.addTarget(self, action: #selector(didtapFood), for: .touchUpInside)
+        
+        chooseFoodButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chooseFoodButton.topAnchor.constraint(equalTo: midImage.bottomAnchor, constant: 8),
+            chooseFoodButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 93),
+            chooseFoodButton.widthAnchor.constraint(equalToConstant: 55),
+            chooseFoodButton.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
+    
+    func configureChooseSportButton() {
+        chooseSportButton.setTitle("運動", for: .normal)
+        chooseSportButton.setTitleColor(.black, for: .normal)
+        chooseSportButton.addTarget(self, action: #selector(didTapSport), for: .touchUpInside)
+        
+        chooseSportButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chooseSportButton.topAnchor.constraint(equalTo: midImage.bottomAnchor, constant: 8),
+            chooseSportButton.leadingAnchor.constraint(equalTo: chooseFoodButton.trailingAnchor, constant: 127),
+            chooseSportButton.widthAnchor.constraint(equalToConstant: 55),
+            chooseSportButton.heightAnchor.constraint(equalToConstant: 35)
+        ])
+    }
+    
+    func configureChooseButtonLine() {
+        chooseButtonLine.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chooseButtonLine.topAnchor.constraint(equalTo: chooseFoodButton.bottomAnchor, constant: 1),
+            chooseButtonLine.leadingAnchor.constraint(equalTo: chooseFoodButton.leadingAnchor, constant: -31),
+            chooseButtonLine.widthAnchor.constraint(equalToConstant: 120),
+            chooseButtonLine.heightAnchor.constraint(equalToConstant: 2)
+        ])
+    }
 
     
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "choose", for: indexPath) as! ChooseBarCell
+        return cell
+    }
+    
+    
+    func configureCollectionView() {
+        layout.itemSize = CGSize(width: 400, height: 300)
+        layout.scrollDirection = .horizontal
+
+        choosePageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        choosePageCollectionView.register(ChooseBarCell.self, forCellWithReuseIdentifier: "choose")
+        choosePageCollectionView.backgroundColor = .clear
+        choosePageCollectionView.dataSource = self
+        view.addSubview(choosePageCollectionView)
+        
+        choosePageCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            choosePageCollectionView.topAnchor.constraint(equalTo: midImage.bottomAnchor, constant: 50),
+            choosePageCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            choosePageCollectionView.widthAnchor.constraint(equalToConstant: 400),
+            choosePageCollectionView.heightAnchor.constraint(equalToConstant: 300)
+        ])
+    }
+    
+    
+    @objc func didtapFood() {
+        choosePageCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+    
+    @objc func didTapSport() {
+        choosePageCollectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+
     func breakfirstViewController(bool: Bool) {
         label.isHidden = bool
     }
