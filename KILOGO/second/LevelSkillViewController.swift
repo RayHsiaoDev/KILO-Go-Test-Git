@@ -9,7 +9,7 @@ import UIKit
 
 class LevelSkillViewController: UIViewController {
     
-    private let backimage = ImageModels(type: .LevelBackground)
+    private let backimage = UIImageView()
     
     private let headerView = test(frame: .zero)
     
@@ -27,6 +27,7 @@ class LevelSkillViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
         view.backgroundColor = .white
+        backimage.image = UIImage(named: "技能背景")
         view.addSubview(backimage)
         view.addSubview(bear)
         view.addSubview(headerView)

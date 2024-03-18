@@ -13,35 +13,62 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let IG = IGViewController()
-        let FoodData = FoodDataViewController()
-        let Home = HomePageViewController()
-        let Rank = RankPageViewController()
-        let Setting = SettingViewController()
-        let level = LevelSkillViewController()
-        
-        let navIG = UINavigationController(rootViewController: IG)
-        let navFoodData = UINavigationController(rootViewController: FoodData)
-        let navHome = UINavigationController(rootViewController: Home)
-        let navRank = UINavigationController(rootViewController: Rank)
-        let navSetting = UINavigationController(rootViewController: Setting)
-        let navLevel = UINavigationController(rootViewController: level)
-        
-        navIG.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "熊"), tag: 1)
-        navFoodData.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "湯匙"), tag: 2)
-        navHome.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "家"), tag: 3)
-        navRank.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "排行榜"), tag: 4)
-        navSetting.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "設定"), tag: 5)
-        
-        navIG.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        navFoodData.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        navHome.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        navRank.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        navSetting.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         tabBar.tintColor = .black
-        setViewControllers([navIG,navFoodData,navHome,navRank,navSetting], animated: false)
+        viewControllers = [createIgNC(), createFoodDataNC(), createHomeNC(), createRankNC(), createSettingNC()]
         selectedIndex = 2
         self.tabBar.backgroundColor = .white
+    }
+    
+    
+    func createIgNC() -> UINavigationController {
+        let igVC = IGViewController()
+        igVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "熊"), tag: 1)
+        igVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        
+        return UINavigationController(rootViewController: igVC)
+    }
+    
+    
+    func createFoodDataNC() -> UINavigationController {
+        let foodVC = FoodDataViewController()
+        foodVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "湯匙"), tag: 2)
+        foodVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        
+        return UINavigationController(rootViewController: foodVC)
+    }
+    
+    
+    func createHomeNC() -> UINavigationController {
+        let HomeVC = HomePageViewController()
+        HomeVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "家"), tag: 3)
+        HomeVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        
+        return UINavigationController(rootViewController: HomeVC)
+    }
+    
+    
+    func createRankNC() -> UINavigationController {
+        let RankVC = RankPageViewController()
+        RankVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "排行榜"), tag: 4)
+        RankVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        
+        return UINavigationController(rootViewController: RankVC)
+    }
+    
+    
+    func createSettingNC() -> UINavigationController {
+        let settingVC = SettingViewController()
+        settingVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "設定"), tag: 5)
+        settingVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        
+        return UINavigationController(rootViewController: settingVC)
+    }
+    
+    
+    func createLevelNC() -> UINavigationController {
+        let levelVC = LevelSkillViewController()
+        
+        return UINavigationController(rootViewController: levelVC)
     }
     
 }

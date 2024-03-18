@@ -13,16 +13,20 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
 
     let waterWave = WaterModel()
     var dataPicker = UIDatePicker()
-    
-    static let top = UIImage(named: "上面bar")
-    let topView = UIImageView(image: top)
+    let topBarImage = UIImageView()
+    let dateLabel = UILabel()
+    let midImage = UIImageView()
+    let midGetKcalImage = UIImageView()
+    let midConsumeKcalImage = UIImageView()
+    let midTotalKcalImage = UIImageView()
     
     static let mid = UIImage(named: "中間圖層")
     let midView = UIImageView(image: mid)
+
 //    let midView1 = UIImageView(image: mid)
 //    let midView2 = UIImageView(image: mid)
     
-    static let midPeople = UIImage(named: "人")
+    static let midPeople = UIImage(named: "人") // 沒用
     let midPeopleView = UIImageView(image: midPeople)
     
     static let midCircle1 = UIImage(named: "中間bar1")
@@ -197,8 +201,6 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
         
         data.frame = dataFrame
         
-        topView.frame = CGRect(x: -5, y: 0, width: view.width+10, height: 80)
-        
         midView.frame = CGRect(x: 25 , y: data.bottom + 23, width: view.width-50, height: 400)
 //        midView1.frame = CGRect(x: 25 , y: data.bottom + 23, width: view.width-50, height: 400)
 //        midView2.frame = CGRect(x: 25 , y: data.bottom + 23, width: view.width-50, height: 400)
@@ -260,14 +262,14 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
         search5Button.isHidden = true
         underline2.isHidden = true
         view.addSubview(waterWave)
-        view.addSubview(data)
-        view.addSubview(topView)
-        view.addSubview(midView)
+        view.addSubview(topBarImage)
+        view.addSubview(dateLabel)
+        view.addSubview(midImage)
 //        view.addSubview(midView1)
 //        view.addSubview(midView2)
 //        view.addSubview(midPeopleView)
-        view.addSubview(midCircle1View)
-        view.addSubview(midCircle2View)
+        view.addSubview(midGetKcalImage)
+        view.addSubview(midConsumeKcalImage)
         view.addSubview(midCircle3View)
         view.addSubview(text1)
         view.addSubview(text2)
@@ -287,16 +289,97 @@ class FoodDataViewController: UIViewController, BreakfirstViewControllerDelegate
         view.addSubview(search4Button)
         view.addSubview(search5Button)
         view.addSubview(label)
+        
+        configureTopBarImage()
+        configureDateLabel()
+        configureMidImage()
+        configureGetKcalBar()
+        configureConsumeKcalBar()
+        
         waterWave.progress = 0
         waterWave.setUpProgress(waterWave.progress)
         NSLayoutConstraint.activate([
-            waterWave.heightAnchor.constraint(equalToConstant: midView.height/2+50),
-            waterWave.leftAnchor.constraint(equalTo: midView.leftAnchor, constant: 0),
-            waterWave.rightAnchor.constraint(equalTo: midView.rightAnchor, constant: 0),
-            waterWave.bottomAnchor.constraint(equalTo: midView.bottomAnchor, constant: -30)
+            waterWave.heightAnchor.constraint(equalToConstant: midImage.height/2+50),
+            waterWave.leftAnchor.constraint(equalTo: midImage.leftAnchor, constant: 0),
+            waterWave.rightAnchor.constraint(equalTo: midImage.rightAnchor, constant: 0),
+            waterWave.bottomAnchor.constraint(equalTo: midImage.bottomAnchor, constant: -30)
             
         ])
     }
+    
+    
+    func configureTopBarImage() {
+        topBarImage.image = UIImage(named: "上面bar")
+        
+        topBarImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topBarImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            topBarImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            topBarImage.widthAnchor.constraint(equalToConstant: view.width + 10),
+            topBarImage.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+    
+    
+    func configureDateLabel() {
+        let date = NSDate()
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
+        dateLabel.text = formatter.string(from: date as Date)
+        dateLabel.textAlignment = .center
+        dateLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        dateLabel.backgroundColor = #colorLiteral(red: 1, green: 0.7630042434, blue: 0.3796334863, alpha: 1)
+        dateLabel.layer.cornerRadius = 15
+        dateLabel.clipsToBounds = true
+        dateLabel.isUserInteractionEnabled = true
+        
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: topBarImage.bottomAnchor, constant: 20),
+            dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dateLabel.widthAnchor.constraint(equalToConstant: 300),
+            dateLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+    }
+    
+    
+    func configureMidImage() {
+        midImage.image = UIImage(named: "新中間圖層")
+        midImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            midImage.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20),
+            midImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            midImage.widthAnchor.constraint(equalToConstant: 390),
+            midImage.heightAnchor.constraint(equalToConstant: 400)
+        ])
+    }
+    
+    
+    func configureGetKcalBar() {
+        midGetKcalImage.image = UIImage(named: "中間bar1")
+        midGetKcalImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            midGetKcalImage.bottomAnchor.constraint(equalTo: midImage.bottomAnchor, constant: -6),
+            midGetKcalImage.leadingAnchor.constraint(equalTo: midImage.leadingAnchor, constant: 15),
+            midGetKcalImage.widthAnchor.constraint(equalToConstant: 110),
+            midGetKcalImage.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    
+    func configureConsumeKcalBar() {
+        midConsumeKcalImage.image = UIImage(named: "中間bar1")
+        midConsumeKcalImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            midConsumeKcalImage.bottomAnchor.constraint(equalTo: midImage.bottomAnchor, constant: -6),
+            midConsumeKcalImage.leadingAnchor.constraint(equalTo: midGetKcalImage.trailingAnchor, constant: 15),
+            midConsumeKcalImage.widthAnchor.constraint(equalToConstant: 110),
+            midConsumeKcalImage.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+
+    
     
     func breakfirstViewController(bool: Bool) {
         label.isHidden = bool

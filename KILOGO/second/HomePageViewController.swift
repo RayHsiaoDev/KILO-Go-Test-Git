@@ -15,74 +15,95 @@ protocol HomePageViewControllerDelegate: AnyObject {
 
 class HomePageViewController: UIViewController {
     
-    private let backgroundIM = ImageModels(type: .LevelBackground)
-    var musicPlayer: AVPlayer?
-    var animePlayer = AVPlayerLayer()
     weak var delegate: HomePageViewControllerDelegate?
-    
-    private let headerView = test(frame: .zero)
-    //這裡可以增加真正的功能
-    let headView = UIImageView()
+    let backgroundImage = UIImageView()
+    var musicPlayer = AVPlayer()
+    let headView = UIImageView() //這裡可以增加真正的功能
+    var animatePlayerLayer = AVPlayerLayer()
     let circleView = UIView()
-    let medalImage = UIImageView()
-    let kcalImage = UIImageView()
-    let kcalProgressBar = KcalProgressBar()
     let circleProgressBarNew = CircleProgressBar()
+    let medalImage = UIImageView()
+    let kcalProgressBar = KcalProgressBar()
+    let kcalImage = UIImageView()
+    let number = UILabel()
     let startButton = UIButton()
     let pedometerButton = UIButton()
     let levelUpButton = UIButton()
-    let number = UILabel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = Bundle.main.url(forResource: "mainMusic", withExtension: "mp3") else {
-            return
-        }
-        musicPlayer = AVPlayer(url: url)
-        musicPlayer?.play()
         view.backgroundColor = .white
-        view.addSubview(backgroundIM)
-        view.layer.addSublayer(animePlayer)
+        view.addSubview(backgroundImage)
+        view.layer.addSublayer(animatePlayerLayer)
         view.addSubview(circleView)
-//        view.addSubview(circleProgressBar)
         view.addSubview(headView)
+        view.addSubview(circleProgressBarNew)
+        view.addSubview(medalImage)
         view.addSubview(kcalProgressBar)
         view.addSubview(kcalProgressBar.image)
-//        view.layer.addSublayer(kcalProgressBar.image)
+        view.addSubview(kcalImage)
+        view.addSubview(number)
         view.addSubview(startButton)
         view.addSubview(pedometerButton)
         view.addSubview(levelUpButton)
-        view.addSubview(medalImage)
-        view.addSubview(kcalImage)
-        view.addSubview(number)
-        view.addSubview(circleProgressBarNew)
+        configureBackgroundImage()
+        configureMusicPlayer()
         configureHeadView()
+        configureAnimatePlayer()
         configureCircleView()
         configureMedalImage()
         configureCircleProgressBar()
-        configureNumber()
         configureKcalImage()
         configureKcalProgressBar()
+        configureNumber()
         configureStartButton()
         configurePedometerButton()
         configureLevelUpButton()
-
-        guard let anime = Bundle.main.url(forResource: "主畫面熊動畫", withExtension: "mov") else {
-            return
-        }
-        animePlayer.player = AVPlayer(url: anime)
-        startButton.addTarget(self, action: #selector(didTapGameStart), for: .touchUpInside)
-        pedometerButton.addTarget(self, action: #selector(didTapPedometer), for: .touchUpInside)
-        levelUpButton.addTarget(self, action: #selector(didTapLevelUp), for: .touchUpInside)
+        checkUserSignIn()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        animePlayer.player?.play()
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: animePlayer.player?.currentItem, queue: .main) { _ in
-            self.animePlayer.player?.seek(to: .zero)
-            self.animePlayer.player?.play()
+        //測試 NotificationCenter.default 需不需要放這裡
+    }
+    
+    
+    func checkUserSignIn() {
+        if AuthManager2.share.isSignin {
+            let email = AuthManager2.share.userEmail
+            print("使用者：\(email)登入中")
+        } else {
+            print("沒有使用者登入中")
+        }
+    }
+    
+    
+    func configureBackgroundImage() {
+        backgroundImage.image =  UIImage(named: "技能背景")
+        backgroundImage.clipsToBounds = true
+        backgroundImage.frame = view.bounds
+    }
+    
+    
+    func configureMusicPlayer() {
+        guard let musicURL = Bundle.main.url(forResource: "mainMusic", withExtension: "mp3") else { return }
+        musicPlayer = AVPlayer(url: musicURL)
+//        musicPlayer.play()
+    }
+    
+    
+    func configureAnimatePlayer() {
+        guard let videoURL = Bundle.main.url(forResource: "主畫面熊動畫", withExtension: "mov") else { return }
+        animatePlayerLayer.player = AVPlayer(url: videoURL)
+        animatePlayerLayer.frame = CGRect(x: -50, y: -50, width: view.width+100, height: view.height+100)
+        guard let player = animatePlayerLayer.player else { return }
+        player.play()
+        
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { result in
+            player.seek(to: .zero)
+            player.play()
         }
     }
     
@@ -195,9 +216,11 @@ class HomePageViewController: UIViewController {
     func configureStartButton() {
         startButton.clipsToBounds = true
         startButton.setBackgroundImage(UIImage(named: "開始按鈕"), for: .normal)
+        startButton.addTarget(self, action: #selector(didTapGameStart), for: .touchUpInside)
+        
         startButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 630),
+            startButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 565),
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startButton.widthAnchor.constraint(equalToConstant: 160),
             startButton.heightAnchor.constraint(equalToConstant: 160)
@@ -208,6 +231,8 @@ class HomePageViewController: UIViewController {
     func configurePedometerButton() {
         pedometerButton.clipsToBounds = true
         pedometerButton.setBackgroundImage(UIImage(named: "計步器按鈕"), for: .normal)
+        pedometerButton.addTarget(self, action: #selector(didTapPedometer), for: .touchUpInside)
+        
         pedometerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pedometerButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 430),
@@ -221,6 +246,8 @@ class HomePageViewController: UIViewController {
     func configureLevelUpButton() {
         levelUpButton.clipsToBounds = true
         levelUpButton.setBackgroundImage(UIImage(named: "技能升級按鈕"), for: .normal)
+        levelUpButton.addTarget(self, action: #selector(didTapLevelUp), for: .touchUpInside)
+        
         levelUpButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             levelUpButton.topAnchor.constraint(equalTo: pedometerButton.bottomAnchor, constant: -28),
@@ -228,12 +255,6 @@ class HomePageViewController: UIViewController {
             levelUpButton.widthAnchor.constraint(equalToConstant: 150),
             levelUpButton.heightAnchor.constraint(equalToConstant: 130)
         ])
-    }
-    
-    
-    @objc func didTapLevelUp() {
-        let vc = LevelSkillViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -251,49 +272,15 @@ class HomePageViewController: UIViewController {
     }
     
     
+    @objc func didTapLevelUp() {
+        let vc = LevelSkillViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     @objc func didTapGameStart() {
         self.view.window?.rootViewController = LoadingViewController()
-        musicPlayer?.pause()
+        musicPlayer.pause()
     }
     
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        backgroundIM.frame = view.bounds
-        headerView.frame = CGRect(x: -5, y: 0, width: view.width+10, height: 80)
-//        headerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-//        headerView.layer.cornerRadius = 30
-//        let circleWidth = view.width/3*2+10
-//        circleView.frame = CGRect(x: 0-circleWidth/2, y: headerView.bottom-circleWidth/2, width: circleWidth, height: circleWidth)
-//        circleView.layer.cornerRadius = circleWidth/2
-        
-//        medals.frame = CGRect(origin: CGPoint(x: circleView.center.x-10, y: circleView.center.y), size: CGSize(width: circleWidth/4+30, height: circleWidth/4+30))
-        
-        // circleBar
-//        circleProgressBar.frame.size = CGSize(width: circleWidth-20, height: circleWidth-20)
-//        circleProgressBar.center = CGPoint(x: circleView.center.x-circleProgressBar.width/2, y: circleView.center.y+circleProgressBar.height/2)
-//        circleProgressBar.color = UIColor(red: 1, green: 0.6, blue: 0.3, alpha: 1)
-//        // horizontalBar
-//        horizontalProgressBar.frame = CGRect(x: circleView.right, y: headerView.bottom+50, width: view.width-circleView.width/2-30, height: 20)
-//        horizontalProgressBar.color = .red
-        
-//        startbutton.frame = CGRect(x: 140, y: view.height/3*2+50, width: view.width-280, height: view.width-280)
-//        pedometerButton.frame = CGRect(x: view.right-90, y: view.center.y+20, width: 150, height: 130)
-//        levelUpButton.frame = CGRect(x: view.right-90, y: pedometerButton.bottom-30, width: 150, height: 130)
-        animePlayer.frame = CGRect(x: -50, y: -50, width: view.width+100, height: view.height+100)
-//        medals2222.frame = CGRect(x: horizontalProgressBar.left, y: horizontalProgressBar.bottom-35, width: horizontalProgressBar.width, height: 200)
-        
-//        number.frame = CGRect(x: 230, y: 134, width: 100, height: 13)
-    }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-////        try! Auth.auth().signOut()
-//        circleProgressBar.progress += 0.1
-//        horizontalProgressBar.progress += 0.1
-//        if circleProgressBar.progress > 0.99 || horizontalProgressBar.progress > 0.99 {
-//            print("ok")
-//            circleProgressBar.progress = 0
-//            horizontalProgressBar.progress = 0
-//        }
-//    }
 }

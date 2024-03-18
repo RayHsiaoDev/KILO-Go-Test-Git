@@ -53,6 +53,7 @@ class FoodSearchViewController: UIViewController, UITableViewDelegate, UITableVi
 
         view.backgroundColor = .systemBackground
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .done, target: self, action: #selector(didTabBackToRecordKacl))
+        
         searchBar.delegate = self
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["全部","蛋類","肉類","蔬果類","飲料類"]

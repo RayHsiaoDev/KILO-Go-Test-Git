@@ -17,8 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowSence = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowSence)
         if AuthManager2.share.isSignin {
-            window.rootViewController = HomePageViewController()
+//            window.rootViewController = HomePageViewController()
 //            window.rootViewController = FirstPageViewController()
+            window.rootViewController = TabBarViewController()
         }
         else {
             window.rootViewController = FirstPageViewController()
