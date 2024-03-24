@@ -23,13 +23,14 @@ class WaterModel: UIView {
     var showSingleWave = false
     private var start = false
     
-    var progress: CGFloat = 0.0
     var waveHeight: CGFloat = 20.0
 
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
     }
+    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -48,7 +49,7 @@ extension WaterModel {
 //        layer.borderWidth = 1.0
         layer.borderColor = UIColor.lightGray.cgColor
         
-        waveHeight = 8.0
+        waveHeight = 10.0
         
         firstColor = #colorLiteral(red: 1, green: 0.5727596283, blue: 0.1528507173, alpha: 1).withAlphaComponent(0.8)
         secondColor = #colorLiteral(red: 1, green: 0.5727596283, blue: 0.1528507173, alpha: 1).withAlphaComponent(0.4)
@@ -75,8 +76,6 @@ extension WaterModel {
     }
     
     func setUpProgress(_ pr: CGFloat) {
-        progress = pr
-        
         let top: CGFloat = pr*bounds.size.height
         firstLayer.setValue(height-top, forKeyPath: "position.y")
         secondLayer.setValue(height-top, forKeyPath: "position.y")

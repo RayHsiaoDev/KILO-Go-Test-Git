@@ -21,6 +21,13 @@
 		8510493BDC53CD4E1AA331C2 /* Pods_KILOGO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BF634506759B595E9A0E44 /* Pods_KILOGO.framework */; };
 		858013132BA80EB700534318 /* ChooseBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013122BA80EB700534318 /* ChooseBarCell.swift */; };
 		858013152BA82F0800534318 /* ChooseButtonLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013142BA82F0800534318 /* ChooseButtonLine.swift */; };
+		858013172BAAD86400534318 /* DataPickerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013162BAAD86400534318 /* DataPickerContainerView.swift */; };
+		858013192BAADB4100534318 /* DataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013182BAADB4100534318 /* DataPickerViewController.swift */; };
+		8580131B2BB011EF00534318 /* FoodDataSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8580131A2BB011EF00534318 /* FoodDataSearchViewController.swift */; };
+		8580131D2BB0144600534318 /* FoodDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8580131C2BB0144600534318 /* FoodDataCell.swift */; };
+		858013202BB0236B00534318 /* KILO GO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */; };
+		858013292BB0331000534318 /* FoodMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013272BB0331000534318 /* FoodMO+CoreDataClass.swift */; };
+		8580132A2BB0331000534318 /* FoodMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */; };
 		F2149C4427424DC8006B5C1A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C4327424DC8006B5C1A /* ARViewController.swift */; };
 		F2149C4827425312006B5C1A /* SKScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2149C4727425312006B5C1A /* SKScene.sks */; };
 		F2149C4A2742547A006B5C1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C492742547A006B5C1A /* Scene.swift */; };
@@ -123,6 +130,13 @@
 		8506055C2BA0349D00FA4E85 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		858013122BA80EB700534318 /* ChooseBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBarCell.swift; sourceTree = "<group>"; };
 		858013142BA82F0800534318 /* ChooseButtonLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseButtonLine.swift; sourceTree = "<group>"; };
+		858013162BAAD86400534318 /* DataPickerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPickerContainerView.swift; sourceTree = "<group>"; };
+		858013182BAADB4100534318 /* DataPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPickerViewController.swift; sourceTree = "<group>"; };
+		8580131A2BB011EF00534318 /* FoodDataSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataSearchViewController.swift; sourceTree = "<group>"; };
+		8580131C2BB0144600534318 /* FoodDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataCell.swift; sourceTree = "<group>"; };
+		8580131F2BB0236B00534318 /* KILO GO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "KILO GO.xcdatamodel"; sourceTree = "<group>"; };
+		858013272BB0331000534318 /* FoodMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DB8570A4D7ED3DBC8BF971C4 /* Pods-KILOGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KILOGO.debug.xcconfig"; path = "Target Support Files/Pods-KILOGO/Pods-KILOGO.debug.xcconfig"; sourceTree = "<group>"; };
 		F2149C4327424DC8006B5C1A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F2149C4727425312006B5C1A /* SKScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKScene.sks; sourceTree = "<group>"; };
@@ -280,6 +294,8 @@
 		F23996E4273BB2E5007F8ADE = {
 			isa = PBXGroup;
 			children = (
+				858013272BB0331000534318 /* FoodMO+CoreDataClass.swift */,
+				858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */,
 				F24E5A3B276C8986008054D8 /* 技能動畫 */,
 				F255B5C6276B1BBE007FAD81 /* Music */,
 				F224D45A274A96C50057AB48 /* GameSkillMov */,
@@ -474,6 +490,11 @@
 				F285F770273BC033009A34AD /* FoodDataViewsController.swift */,
 				858013122BA80EB700534318 /* ChooseBarCell.swift */,
 				858013142BA82F0800534318 /* ChooseButtonLine.swift */,
+				858013162BAAD86400534318 /* DataPickerContainerView.swift */,
+				858013182BAADB4100534318 /* DataPickerViewController.swift */,
+				8580131A2BB011EF00534318 /* FoodDataSearchViewController.swift */,
+				8580131C2BB0144600534318 /* FoodDataCell.swift */,
+				8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */,
 			);
 			path = second;
 			sourceTree = "<group>";
@@ -668,6 +689,7 @@
 				F2464976273BE57F00E2F2F6 /* PostCollectionViewCell.swift in Sources */,
 				F246496C273BE29300E2F2F6 /* IGHomeFeedCellType.swift in Sources */,
 				F285F75E273BB908009A34AD /* SignUpViewController.swift in Sources */,
+				8580131D2BB0144600534318 /* FoodDataCell.swift in Sources */,
 				F2464970273BE36000E2F2F6 /* PosterCollecitonViewCellViewModel.swift in Sources */,
 				F285F75A273BB89E009A34AD /* TabBarViewController.swift in Sources */,
 				F2F74585276F93DC008E2D2F /* LevelSkillViewController.swift in Sources */,
@@ -685,15 +707,18 @@
 				F2D11CBA275E0987000277C2 /* ChooseMainSkill.swift in Sources */,
 				850605592B91AEB100FA4E85 /* CollectionViewFlowLayout.swift in Sources */,
 				F25358482770D06E0011D6F0 /* FoodDataViewController.swift in Sources */,
+				858013172BAAD86400534318 /* DataPickerContainerView.swift in Sources */,
 				F285F777273BC051009A34AD /* SettingViewController.swift in Sources */,
 				F285F771273BC033009A34AD /* FoodDataViewsController.swift in Sources */,
 				F2464974273BE54600E2F2F6 /* PosterCollectionViewCell.swift in Sources */,
 				F224D459274A54C70057AB48 /* GameModels.swift in Sources */,
 				F222E46C273C412700BB8E5D /* Int+EXT.swift in Sources */,
 				F255B5CA276B3007007FAD81 /* ResultsViewController.swift in Sources */,
+				858013192BAADB4100534318 /* DataPickerViewController.swift in Sources */,
 				F285F75C273BB8F8009A34AD /* FirstPageViewController.swift in Sources */,
 				F2B01BFA2770EE8500F80D3F /* BreakfirstViewController.swift in Sources */,
 				F2464978273BE8C700E2F2F6 /* Post.swift in Sources */,
+				858013292BB0331000534318 /* FoodMO+CoreDataClass.swift in Sources */,
 				F285F76F273BC01E009A34AD /* IGViewController.swift in Sources */,
 				F28DC71D2746DA8D0094DFD1 /* GameScene.swift in Sources */,
 				F2D11CBC275E1EAF000277C2 /* ChooseMainSkillIntroduce.swift in Sources */,
@@ -720,10 +745,13 @@
 				F215DCE727628A3B009D76CB /* PlainHorizontalProgressBar.swift in Sources */,
 				F28843A32770E00B004099F4 /* waterTest.swift in Sources */,
 				850605432B7CC49D00FA4E85 /* AuthTextFieldType.swift in Sources */,
+				8580132A2BB0331000534318 /* FoodMO+CoreDataProperties.swift in Sources */,
 				F22A4659274D3E4C004B2012 /* ARImageView.swift in Sources */,
+				8580131B2BB011EF00534318 /* FoodDataSearchViewController.swift in Sources */,
 				F2F74587276F954F008E2D2F /* LevelSkillPageMain.swift in Sources */,
 				8506055D2BA0349D00FA4E85 /* CircleProgressBar.swift in Sources */,
 				8506055B2B9B09FA00FA4E85 /* KcalProgressBar.swift in Sources */,
+				858013202BB0236B00534318 /* KILO GO.xcdatamodeld in Sources */,
 				F23996F1273BB2E5007F8ADE /* AppDelegate.swift in Sources */,
 				F23996F3273BB2E5007F8ADE /* SceneDelegate.swift in Sources */,
 				F244298B273D980600C685BE /* StorageManager.swift in Sources */,
@@ -942,6 +970,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8580131F2BB0236B00534318 /* KILO GO.xcdatamodel */,
+			);
+			currentVersion = 8580131F2BB0236B00534318 /* KILO GO.xcdatamodel */;
+			path = "KILO GO.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F23996E5273BB2E5007F8ADE /* Project object */;
 }
