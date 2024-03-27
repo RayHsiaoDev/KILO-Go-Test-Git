@@ -51,4 +51,35 @@ class RealtimeDatabaseManager {
             }
         }
     }
+    
+    
+    func creatKcal(email: String, date: String, breakfastKcal: Int, lunchKcal: Int, dinnerKcal: Int, sportKcal: Int) {
+        let email = email.emailEncoder()
+        let post: [String: Any] = [
+            "早餐Kcal": breakfastKcal,
+            "午餐Kcal": lunchKcal,
+            "晚餐Kcal": dinnerKcal,
+            "運動Kcal": sportKcal
+        ]
+        ref.child("email:\(email)").child("userData").child("\(date)").setValue(post)
+        ref.observeSingleEvent(of: .childAdded) { DataSnapshot in
+            print("成功建立\(DataSnapshot)")
+        }
+    }
+    
+    
+    func getUserFoodData(email: String, completed: @escaping((NSDictionary) -> Void)) {
+        let email = email.emailEncoder()
+        ref.child("email:\(email)").child("userData").child("20240328").getData { error, dataSnapshot in
+            guard error == nil else {
+                print("有錯誤喔！如下\(error)")
+                return
+            }
+            
+            let foodData = dataSnapshot.value as? NSDictionary
+            guard let foodData = foodData else { return }
+            print("這裡測試dic的取值\(foodData)")
+            completed(foodData)
+        }
+    }
 }

@@ -9,9 +9,9 @@ import UIKit
 
 class FoodDataCell: UITableViewCell {
     
-    let foodNameLabel = UILabel()
-    let foodkcalLabel = UILabel()
-    let foodTypeLabel = UILabel()
+    var foodNameLabel = UILabel()
+    var foodkcalLabel = UILabel()
+    var foodTypeLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,7 +20,7 @@ class FoodDataCell: UITableViewCell {
         addSubview(foodTypeLabel)
         configureFoodNameLabel()
         configureFoodKcalLabel()
-        configureFoodTypeLabel()
+//        configureFoodTypeLabel()
     }
     
     
@@ -30,43 +30,41 @@ class FoodDataCell: UITableViewCell {
     
     
     func configureFoodNameLabel() {
-        foodNameLabel.text = "漢堡"
         foodNameLabel.textAlignment = .center
-        foodNameLabel.font = UIFont.systemFont(ofSize: 28)
+        foodNameLabel.font = UIFont.systemFont(ofSize: 30)
         foodNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             foodNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             foodNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            foodNameLabel.widthAnchor.constraint(equalToConstant:   80),
-            foodNameLabel.heightAnchor.constraint(equalToConstant: 40)
+            foodNameLabel.widthAnchor.constraint(equalToConstant: 150),
+            foodNameLabel.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     
     
     func configureFoodKcalLabel() {
-        foodkcalLabel.text = "345"
         foodkcalLabel.textAlignment = .center
-        foodkcalLabel.font = UIFont.systemFont(ofSize: 15)
+        foodkcalLabel.font = UIFont.systemFont(ofSize: 25)
         foodkcalLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            foodkcalLabel.topAnchor.constraint(equalTo: foodNameLabel.bottomAnchor, constant: 2),
-            foodkcalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            foodkcalLabel.widthAnchor.constraint(equalToConstant: 80),
-            foodkcalLabel.heightAnchor.constraint(equalToConstant: 40)
+            foodkcalLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            foodkcalLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant:-45),
+            foodkcalLabel.widthAnchor.constraint(equalToConstant: 100),
+            foodkcalLabel.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
     
     
     func configureFoodTypeLabel() {
-        foodTypeLabel.text = "肉類"
+        foodTypeLabel.text = "食物"
         foodTypeLabel.textAlignment = .center
-        foodTypeLabel.font = UIFont.systemFont(ofSize: 45)
+        foodTypeLabel.font = UIFont.systemFont(ofSize: 13)
         foodTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            foodTypeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            foodTypeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant:-20),
-            foodTypeLabel.widthAnchor.constraint(equalToConstant: 100),
-            foodTypeLabel.heightAnchor.constraint(equalToConstant: 70)
+            foodTypeLabel.topAnchor.constraint(equalTo: foodNameLabel.bottomAnchor, constant: 1),
+            foodTypeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            foodTypeLabel.widthAnchor.constraint(equalToConstant: 80),
+            foodTypeLabel.heightAnchor.constraint(equalToConstant: 15)
         ])
     }
 }

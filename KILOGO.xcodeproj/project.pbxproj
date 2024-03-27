@@ -28,6 +28,8 @@
 		858013202BB0236B00534318 /* KILO GO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */; };
 		858013292BB0331000534318 /* FoodMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013272BB0331000534318 /* FoodMO+CoreDataClass.swift */; };
 		8580132A2BB0331000534318 /* FoodMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */; };
+		8580132D2BB1328C00534318 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8580132C2BB1328C00534318 /* FoodModel.swift */; };
+		8580132F2BB134F900534318 /* foodData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8580132E2BB134F900534318 /* foodData.json */; };
 		F2149C4427424DC8006B5C1A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C4327424DC8006B5C1A /* ARViewController.swift */; };
 		F2149C4827425312006B5C1A /* SKScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2149C4727425312006B5C1A /* SKScene.sks */; };
 		F2149C4A2742547A006B5C1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C492742547A006B5C1A /* Scene.swift */; };
@@ -137,6 +139,8 @@
 		8580131F2BB0236B00534318 /* KILO GO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "KILO GO.xcdatamodel"; sourceTree = "<group>"; };
 		858013272BB0331000534318 /* FoodMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8580132C2BB1328C00534318 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
+		8580132E2BB134F900534318 /* foodData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = foodData.json; path = ../../../../Downloads/foodData.json; sourceTree = "<group>"; };
 		DB8570A4D7ED3DBC8BF971C4 /* Pods-KILOGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KILOGO.debug.xcconfig"; path = "Target Support Files/Pods-KILOGO/Pods-KILOGO.debug.xcconfig"; sourceTree = "<group>"; };
 		F2149C4327424DC8006B5C1A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F2149C4727425312006B5C1A /* SKScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKScene.sks; sourceTree = "<group>"; };
@@ -475,6 +479,7 @@
 		F285F764273BBEF1009A34AD /* second */ = {
 			isa = PBXGroup;
 			children = (
+				8580132E2BB134F900534318 /* foodData.json */,
 				F2B01BFB2770EE8C00F80D3F /* FoodPage */,
 				F253584A2770D62B0011D6F0 /* FoodTableViewCell */,
 				F25358442770CCC20011D6F0 /* 主畫面熊動畫.mov */,
@@ -495,6 +500,7 @@
 				8580131A2BB011EF00534318 /* FoodDataSearchViewController.swift */,
 				8580131C2BB0144600534318 /* FoodDataCell.swift */,
 				8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */,
+				8580132C2BB1328C00534318 /* FoodModel.swift */,
 			);
 			path = second;
 			sourceTree = "<group>";
@@ -628,6 +634,7 @@
 				F269950B276C7CD00029EAFD /* mainMusic.mp3 in Resources */,
 				F24E5A40276C8986008054D8 /* 地獄之火.mov in Resources */,
 				F255B5CE276B3640007FAD81 /* 遊戲音樂.mp3 in Resources */,
+				8580132F2BB134F900534318 /* foodData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +765,7 @@
 				F27D837A276FA8C60008649B /* LevelSkill1PageModelsCell.swift in Sources */,
 				F2F9985A275E733D008DA346 /* ChooseMainPageMainInfo.swift in Sources */,
 				F226F70E275DF72F0081E2F5 /* LabelViewController.swift in Sources */,
+				8580132D2BB1328C00534318 /* FoodModel.swift in Sources */,
 				F215DCE5276220D2009D76CB /* PlainCircularProgressBar.swift in Sources */,
 				8506054B2B86054E00FA4E85 /* RealtimeDatabaseManager.swift in Sources */,
 				F24063DA276A2E9E00498EA9 /* listBackgroundPoint.swift in Sources */,
