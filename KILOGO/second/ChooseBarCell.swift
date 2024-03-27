@@ -9,6 +9,8 @@ import UIKit
 
 protocol chooseBarCellDelegate: AnyObject {
     func didTapBreakfast()
+    func didTapLunch()
+    func didTapDinner()
 }
 
 class ChooseBarCell: UICollectionViewCell {
@@ -63,12 +65,8 @@ class ChooseBarCell: UICollectionViewCell {
     }
     
     
-    @objc func didTapBreakfast() {
-        delegate.didTapBreakfast()
-    }
-    
-    
     func configureLunchButton() {
+        lunchButton.addTarget(self, action: #selector(didTapLunch), for: .touchUpInside)
         lunchButton.setImage(UIImage(named: "午餐"), for: .normal)
         lunchButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -82,6 +80,7 @@ class ChooseBarCell: UICollectionViewCell {
     
     
     func configureDinnerButton() {
+        dinnerButton.addTarget(self, action: #selector(didTapDinner), for: .touchUpInside)
         dinnerButton.setImage(UIImage(named: "晚餐"), for: .normal)
         dinnerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -108,6 +107,7 @@ class ChooseBarCell: UICollectionViewCell {
     
     
     func configureSportButton() {
+        sportButton.addTarget(self, action: #selector(didTapSport), for: .touchUpInside)
         sportButton.setImage(UIImage(named: "運動"), for: .normal)
         sportButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -117,5 +117,25 @@ class ChooseBarCell: UICollectionViewCell {
             sportButton.heightAnchor.constraint(equalToConstant: 90)
         ])
         
+    }
+    
+    
+    @objc func didTapBreakfast() {
+        delegate.didTapBreakfast()
+    }
+    
+    
+    @objc func didTapLunch() {
+        delegate.didTapLunch()
+    }
+    
+    
+    @objc func didTapDinner() {
+        delegate.didTapDinner()
+    }
+    
+    
+    @objc func didTapSport() {
+    
     }
 }

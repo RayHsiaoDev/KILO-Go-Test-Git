@@ -9,7 +9,10 @@ import UIKit
 
 protocol DataPickerViewControllerDelegate: AnyObject {
     func userDidChooseDate(date: String)
+    func realTimeDataBaseDate(date: String)
+    func dataPickerUpdatefoodData(data: NSDictionary)
 }
+
 
 class DataPickerViewController: UIViewController {
     
@@ -76,10 +79,19 @@ class DataPickerViewController: UIViewController {
         formatter.dateFormat = "yyyy年MM月dd日"
         let date = formatter.string(from: dataPickerDate)
         guard date != nil else { return }
-        
 //        dataClosure?(date)
         delegate.userDidChooseDate(date: date)
         print("他選擇的日期是\(date)")
+        
+        let RealtimeDatabaseDate = DateFormatter()
+        RealtimeDatabaseDate.dateFormat = "yyyyMMdd"
+        let Ddate = RealtimeDatabaseDate.string(from: dataPickerDate)
+        delegate.realTimeDataBaseDate(date: Ddate)
+        
+        RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com", date: Ddate) { result in
+            self.delegate.dataPickerUpdatefoodData(data: result)
+        }
+        
         dismiss(animated: true)
     }
 }

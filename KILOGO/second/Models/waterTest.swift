@@ -23,7 +23,7 @@ class WaterModel: UIView {
     var showSingleWave = false
     private var start = false
     
-    var waveHeight: CGFloat = 20.0
+    var waveHeight: CGFloat = 30.0
 
     
     override init(frame: CGRect) {

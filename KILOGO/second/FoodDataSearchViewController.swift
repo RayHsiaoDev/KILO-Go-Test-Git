@@ -8,6 +8,18 @@
 import UIKit
 import CoreData
 
+protocol foodDataSearchViewControllerDelegate: AnyObject {
+    func updateUI(date: String)
+}
+
+enum foodType {
+    case breakfast
+    case lunch
+    case dinner
+    case sport
+}
+
+
 class FoodDataSearchViewController: UIViewController, UITableViewDataSource {
     
     let foodDataTableView = UITableView()
@@ -15,11 +27,16 @@ class FoodDataSearchViewController: UIViewController, UITableViewDataSource {
     var foodMO: FoodManagerObject!
     var food: [FoodManagerObject] = []
     var foodFilter: [FoodManagerObject] = []
+    weak var delegate: foodDataSearchViewControllerDelegate?
+    var foodType: foodType!
+    var isSearching = false
+    var realTimeDataBaseDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(foodDataTableView)
         view.addSubview(searchBar)
+        setDefaultDate()
         configureSearchBar()
         configureTableView()
 //        configureCoreData()
@@ -30,13 +47,19 @@ class FoodDataSearchViewController: UIViewController, UITableViewDataSource {
     }
     
     
+    func setDefaultDate() {
+        let Date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        let currentDate = formatter.string(from: Date)
+        if realTimeDataBaseDate == "" {
+            realTimeDataBaseDate = currentDate
+        }
+    }
+    
+    
     func loadData() {
         foodFilter = food
-//        RealtimeDatabaseManager.shared.creatKcal(email: "godjj@gmail.com", date: "20240328", breakfastKcal: 10, lunchKcal: 10, dinnerKcal: 10, sportKcal: 0)
-        
-        RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com") { result in
-            print(result)
-        }
     }
     
     
@@ -75,6 +98,7 @@ class FoodDataSearchViewController: UIViewController, UITableViewDataSource {
         foodDataTableView.scrollIndicatorInsets = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         foodDataTableView.rowHeight = 100
         foodDataTableView.dataSource = self
+        foodDataTableView.delegate  = self
         foodDataTableView.frame = view.bounds
 //        foodDataTableView.translatesAutoresizingMaskIntoConstraints = false
 //        NSLayoutConstraint.activate([
@@ -104,7 +128,7 @@ class FoodDataSearchViewController: UIViewController, UITableViewDataSource {
             do {
                 food =  try context.fetch(request)
                 for i in food {
-                    print("食物名稱\(i.foodName)食物熱量\(i.foodKcal)")
+//                    print("食物名稱\(i.foodName)食物熱量\(i.foodKcal)")
                 }
                 
             } catch {
@@ -157,6 +181,7 @@ class FoodDataSearchViewController: UIViewController, UITableViewDataSource {
     }
 }
 
+
 extension FoodDataSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
@@ -170,6 +195,7 @@ extension FoodDataSearchViewController: UISearchBarDelegate {
                 }
             }
             foodFilter = foodItem
+            isSearching = true
         }
         foodDataTableView.reloadData()
     }
@@ -180,6 +206,7 @@ extension FoodDataSearchViewController: UISearchBarDelegate {
         foodDataTableView.contentInset = UIEdgeInsets.zero
         searchBar.resignFirstResponder()
         foodFilter = food
+        isSearching = false
         foodDataTableView.reloadData()
     }
     
@@ -192,4 +219,22 @@ extension FoodDataSearchViewController: UISearchBarDelegate {
 }
 
 
+extension FoodDataSearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activeArray = isSearching ? foodFilter : food
+        let food = activeArray[indexPath.item]
+        
+        if foodType == .breakfast {
+            RealtimeDatabaseManager.shared.updateKcal(email: "godjj@gmail.com", date: realTimeDataBaseDate, Kcal: Int(round(food.foodKcal)), foodType: .breakfast)
+            delegate?.updateUI(date: realTimeDataBaseDate)
+        } else if foodType == .lunch {
+            RealtimeDatabaseManager.shared.updateKcal(email: "godjj@gmail.com", date: realTimeDataBaseDate, Kcal: Int(round(food.foodKcal)), foodType: .lunch)
+            delegate?.updateUI(date: realTimeDataBaseDate)
+        } else if foodType == .dinner {
+            RealtimeDatabaseManager.shared.updateKcal(email: "godjj@gmail.com", date: realTimeDataBaseDate, Kcal: Int(round(food.foodKcal)), foodType: .dinner)
+            delegate?.updateUI(date: realTimeDataBaseDate)
+        }
+        dismiss(animated: true)
+    }
+}
 

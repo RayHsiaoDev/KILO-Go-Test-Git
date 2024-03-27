@@ -31,6 +31,9 @@ class FoodDataCell: UITableViewCell {
     
     func configureFoodNameLabel() {
         foodNameLabel.textAlignment = .center
+        foodNameLabel.adjustsFontSizeToFitWidth = true
+        foodNameLabel.minimumScaleFactor = 0.5
+        foodNameLabel.numberOfLines = 0
         foodNameLabel.font = UIFont.systemFont(ofSize: 30)
         foodNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

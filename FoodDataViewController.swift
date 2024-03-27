@@ -33,7 +33,12 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
     var widthAnchor = NSLayoutConstraint()
     var heightAnchor = NSLayoutConstraint()
     let dataPickerNew = UIDatePicker()
-    
+    var realTimeDataBaseDate = ""
+    var waveHeightAnchor = NSLayoutConstraint()
+    var waveLeadingAnchor = NSLayoutConstraint()
+    var waveTrailingAnchor = NSLayoutConstraint()
+    var waveBottomAnchor = NSLayoutConstraint()
+    var currentDate: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +56,8 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
         view.addSubview(chooseFoodButton)
         view.addSubview(chooseSportButton)
         view.addSubview(chooseButtonLine)
+        nowDate()
+        updateVC(date: currentDate)
         configureTopBarImage()
         configureDateLabel()
         configureWaterWave()
@@ -108,12 +115,12 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
     
     func configureWaterWave() {
         waterWave.setUpProgress(1)
-        NSLayoutConstraint.activate([
-            waterWave.heightAnchor.constraint(equalToConstant: midImage.height/2+100),
-            waterWave.leftAnchor.constraint(equalTo: midImage.leftAnchor, constant: 0),
-            waterWave.rightAnchor.constraint(equalTo: midImage.rightAnchor, constant: 0),
-            waterWave.bottomAnchor.constraint(equalTo: midImage.bottomAnchor, constant: -30)
-        ])
+        //Max heightAnchor = 340
+        waveHeightAnchor = waterWave.heightAnchor.constraint(equalToConstant: 340)
+        waveLeadingAnchor = waterWave.leadingAnchor.constraint(equalTo: midImage.leadingAnchor, constant: 0)
+        waveTrailingAnchor =  waterWave.trailingAnchor.constraint(equalTo: midImage.trailingAnchor, constant: 0)
+        waveBottomAnchor =  waterWave.bottomAnchor.constraint(equalTo: midImage.bottomAnchor, constant: -30)
+        NSLayoutConstraint.activate([waveHeightAnchor, waveLeadingAnchor, waveTrailingAnchor, waveBottomAnchor])
     }
     
     
@@ -168,7 +175,7 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
     func configureGetKcalLabel() {
         getKcalLabel.textAlignment = .center
         getKcalLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        getKcalLabel.text = "1300\n攝取卡路里"
+        getKcalLabel.text = "0\n攝取卡路里"
         getKcalLabel.numberOfLines = 2
         getKcalLabel.backgroundColor = .clear
         
@@ -311,6 +318,32 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
     }
     
     
+    func nowDate() {
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        currentDate = formatter.string(from: date as Date)
+    }
+    
+    
+    func updateVC(date: String) {
+        RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com", date: date) {[weak self] result in
+            guard let self = self else { return }
+            let breakfast = result["早餐Kcal"] as? Int ?? 0
+            let lunch = result["午餐Kcal"] as? Int ?? 0
+            let dinner = result["晚餐Kcal"] as? Int ?? 0
+            print("早餐kcal:\(breakfast) 午餐kcal:\(lunch) 晚餐kcal:\(dinner)")
+            
+            let total = breakfast + lunch + dinner
+            DispatchQueue.main.async {
+                self.getKcalLabel.text = "\(String(total))\n攝取卡路里"
+                self.waveHeightAnchor.constant = CGFloat(total)*0.18
+            }
+            print("更新！！\(date)的總卡路里\(total)")
+        }
+    }
+    
+    
     @objc func datapick() {
         let vc = DataPickerViewController()
         vc.delegate = self
@@ -386,18 +419,66 @@ extension FoodDataViewController: UICollectionViewDelegate {
 
 extension FoodDataViewController: DataPickerViewControllerDelegate {
     func userDidChooseDate(date: String) {
-        print("委託的日期是\(date)")
-        
         userPickDate = date
         dateLabel.text = userPickDate
+    }
+    
+    
+    func realTimeDataBaseDate(date: String) {
+        realTimeDataBaseDate = date
+        print("資料庫使用日期\(date)")
+    }
+    
+    
+    func dataPickerUpdatefoodData(data: NSDictionary) {
+        print("接受到dataPicker的委託嘍")
+        guard let breakfast = data["早餐Kcal"] as? Int else { return }
+        guard let lunch = data["午餐Kcal"] as? Int else { return }
+        guard let dinner = data["晚餐Kcal"] as? Int else { return }
+        print("早餐kcal:\(breakfast) 午餐kcal:\(lunch) 晚餐kcal:\(dinner)")
+        let total = breakfast + lunch + dinner
+        DispatchQueue.main.async {
+            self.getKcalLabel.text = "\(String(total))\n攝取卡路里"
+            self.waveHeightAnchor.constant = CGFloat(total)*0.18
+        }
     }
 }
 
 
 extension FoodDataViewController: chooseBarCellDelegate {
+   
     func didTapBreakfast() {
-//        let vc = FoodSearchViewController()
         let vc = FoodDataSearchViewController()
+        vc.foodType = .breakfast
+        vc.delegate = self
+        vc.realTimeDataBaseDate = realTimeDataBaseDate
         present(vc, animated: true)
+    }
+    
+    
+    func didTapLunch() {
+        let vc = FoodDataSearchViewController()
+        vc.foodType = .lunch
+        vc.delegate = self
+        vc.realTimeDataBaseDate = realTimeDataBaseDate
+        present(vc, animated: true)
+    }
+    
+    
+    func didTapDinner() {
+        let vc = FoodDataSearchViewController()
+        vc.foodType = .dinner
+        vc.delegate = self
+        vc.realTimeDataBaseDate = realTimeDataBaseDate
+        present(vc, animated: true)
+    }
+
+}
+
+
+extension FoodDataViewController: foodDataSearchViewControllerDelegate {
+    func updateUI(date: String) {
+        updateVC(date: date)
+        print("最終接收到的時間是\(date)")
     }
 }
