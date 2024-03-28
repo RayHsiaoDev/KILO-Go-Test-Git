@@ -273,7 +273,8 @@ class HomePageViewController: UIViewController {
     
     
     @objc func didTapLevelUp() {
-        let vc = LevelSkillViewController()
+//        let vc = LevelSkillViewController()
+        let vc = SkillViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -30,6 +30,11 @@
 		8580132A2BB0331000534318 /* FoodMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */; };
 		8580132D2BB1328C00534318 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8580132C2BB1328C00534318 /* FoodModel.swift */; };
 		8580132F2BB134F900534318 /* foodData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8580132E2BB134F900534318 /* foodData.json */; };
+		858013312BB4281600534318 /* SkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013302BB4281600534318 /* SkillView.swift */; };
+		858013342BB4553800534318 /* SkillOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013332BB4553800534318 /* SkillOneView.swift */; };
+		858013362BB4561600534318 /* SkillTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013352BB4561600534318 /* SkillTwoView.swift */; };
+		858013382BB4568100534318 /* SkillThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013372BB4568100534318 /* SkillThreeView.swift */; };
+		8580133A2BB4576300534318 /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013392BB4576300534318 /* SkillViewController.swift */; };
 		F2149C4427424DC8006B5C1A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C4327424DC8006B5C1A /* ARViewController.swift */; };
 		F2149C4827425312006B5C1A /* SKScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2149C4727425312006B5C1A /* SKScene.sks */; };
 		F2149C4A2742547A006B5C1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C492742547A006B5C1A /* Scene.swift */; };
@@ -52,9 +57,6 @@
 		F23996FD273BB2E6007F8ADE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F23996FB273BB2E6007F8ADE /* LaunchScreen.storyboard */; };
 		F24063DA276A2E9E00498EA9 /* listBackgroundPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24063D9276A2E9E00498EA9 /* listBackgroundPoint.swift */; };
 		F243DD9E274BD83300559D18 /* winning-1.mov in Resources */ = {isa = PBXBuildFile; fileRef = F243DD9D274BD83300559D18 /* winning-1.mov */; };
-		F2442987273D979E00C685BE /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2442986273D979E00C685BE /* AuthManager.swift */; };
-		F2442989273D97D900C685BE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2442988273D97D900C685BE /* DatabaseManager.swift */; };
-		F244298B273D980600C685BE /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F244298A273D980600C685BE /* StorageManager.swift */; };
 		F246496C273BE29300E2F2F6 /* IGHomeFeedCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246496B273BE29300E2F2F6 /* IGHomeFeedCellType.swift */; };
 		F246496E273BE34500E2F2F6 /* PostCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246496D273BE34500E2F2F6 /* PostCollectionViewCellViewModel.swift */; };
 		F2464970273BE36000E2F2F6 /* PosterCollecitonViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246496F273BE36000E2F2F6 /* PosterCollecitonViewCellViewModel.swift */; };
@@ -94,7 +96,6 @@
 		F285F76B273BBFB6009A34AD /* UserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F76A273BBFB6009A34AD /* UserDataViewController.swift */; };
 		F285F76D273BBFF6009A34AD /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F76C273BBFF6009A34AD /* CharacterViewController.swift */; };
 		F285F76F273BC01E009A34AD /* IGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F76E273BC01E009A34AD /* IGViewController.swift */; };
-		F285F771273BC033009A34AD /* FoodDataViewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F770273BC033009A34AD /* FoodDataViewsController.swift */; };
 		F285F773273BC03D009A34AD /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F772273BC03D009A34AD /* HomePageViewController.swift */; };
 		F285F775273BC048009A34AD /* RankPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F774273BC048009A34AD /* RankPageViewController.swift */; };
 		F285F777273BC051009A34AD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F285F776273BC051009A34AD /* SettingViewController.swift */; };
@@ -141,6 +142,11 @@
 		858013282BB0331000534318 /* FoodMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8580132C2BB1328C00534318 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		8580132E2BB134F900534318 /* foodData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = foodData.json; path = ../../../../Downloads/foodData.json; sourceTree = "<group>"; };
+		858013302BB4281600534318 /* SkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillView.swift; sourceTree = "<group>"; };
+		858013332BB4553800534318 /* SkillOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillOneView.swift; sourceTree = "<group>"; };
+		858013352BB4561600534318 /* SkillTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTwoView.swift; sourceTree = "<group>"; };
+		858013372BB4568100534318 /* SkillThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillThreeView.swift; sourceTree = "<group>"; };
+		858013392BB4576300534318 /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
 		DB8570A4D7ED3DBC8BF971C4 /* Pods-KILOGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KILOGO.debug.xcconfig"; path = "Target Support Files/Pods-KILOGO/Pods-KILOGO.debug.xcconfig"; sourceTree = "<group>"; };
 		F2149C4327424DC8006B5C1A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F2149C4727425312006B5C1A /* SKScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKScene.sks; sourceTree = "<group>"; };
@@ -166,9 +172,6 @@
 		F23996FE273BB2E6007F8ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F24063D9276A2E9E00498EA9 /* listBackgroundPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listBackgroundPoint.swift; sourceTree = "<group>"; };
 		F243DD9D274BD83300559D18 /* winning-1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "winning-1.mov"; sourceTree = SOURCE_ROOT; };
-		F2442986273D979E00C685BE /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		F2442988273D97D900C685BE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		F244298A273D980600C685BE /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F246496B273BE29300E2F2F6 /* IGHomeFeedCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGHomeFeedCellType.swift; sourceTree = "<group>"; };
 		F246496D273BE34500E2F2F6 /* PostCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		F246496F273BE36000E2F2F6 /* PosterCollecitonViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollecitonViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -208,7 +211,6 @@
 		F285F76A273BBFB6009A34AD /* UserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewController.swift; sourceTree = "<group>"; };
 		F285F76C273BBFF6009A34AD /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		F285F76E273BC01E009A34AD /* IGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGViewController.swift; sourceTree = "<group>"; };
-		F285F770273BC033009A34AD /* FoodDataViewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataViewsController.swift; sourceTree = "<group>"; };
 		F285F772273BC03D009A34AD /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		F285F774273BC048009A34AD /* RankPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankPageViewController.swift; sourceTree = "<group>"; };
 		F285F776273BC051009A34AD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,17 @@
 				850605422B7CC49D00FA4E85 /* AuthTextFieldType.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		858013322BB450E800534318 /* Skill Item */ = {
+			isa = PBXGroup;
+			children = (
+				858013302BB4281600534318 /* SkillView.swift */,
+				858013332BB4553800534318 /* SkillOneView.swift */,
+				858013352BB4561600534318 /* SkillTwoView.swift */,
+				858013372BB4568100534318 /* SkillThreeView.swift */,
+			);
+			path = "Skill Item";
 			sourceTree = "<group>";
 		};
 		ACC4CC2A9C364C14B09E589F /* Frameworks */ = {
@@ -354,11 +367,8 @@
 		F2442982273D963300C685BE /* FirebaseManager */ = {
 			isa = PBXGroup;
 			children = (
-				F2442986273D979E00C685BE /* AuthManager.swift */,
 				850605482B80939700FA4E85 /* AuthManager2.swift */,
 				8506054A2B86054E00FA4E85 /* RealtimeDatabaseManager.swift */,
-				F2442988273D97D900C685BE /* DatabaseManager.swift */,
-				F244298A273D980600C685BE /* StorageManager.swift */,
 			);
 			path = FirebaseManager;
 			sourceTree = "<group>";
@@ -492,7 +502,6 @@
 				F25358462770D06E0011D6F0 /* FoodDataViewController.swift */,
 				F2F74584276F93DC008E2D2F /* LevelSkillViewController.swift */,
 				F285F759273BB89E009A34AD /* TabBarViewController.swift */,
-				F285F770273BC033009A34AD /* FoodDataViewsController.swift */,
 				858013122BA80EB700534318 /* ChooseBarCell.swift */,
 				858013142BA82F0800534318 /* ChooseButtonLine.swift */,
 				858013162BAAD86400534318 /* DataPickerContainerView.swift */,
@@ -501,6 +510,8 @@
 				8580131C2BB0144600534318 /* FoodDataCell.swift */,
 				8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */,
 				8580132C2BB1328C00534318 /* FoodModel.swift */,
+				858013322BB450E800534318 /* Skill Item */,
+				858013392BB4576300534318 /* SkillViewController.swift */,
 			);
 			path = second;
 			sourceTree = "<group>";
@@ -692,7 +703,6 @@
 				F2F32D4D274B5AD0000C2122 /* ResultViewController.swift in Sources */,
 				F25358432770B8CB0011D6F0 /* test.swift in Sources */,
 				F22A465B274D5DF6004B2012 /* BodyTrackingConfiguration.swift in Sources */,
-				F2442987273D979E00C685BE /* AuthManager.swift in Sources */,
 				F2464976273BE57F00E2F2F6 /* PostCollectionViewCell.swift in Sources */,
 				F246496C273BE29300E2F2F6 /* IGHomeFeedCellType.swift in Sources */,
 				F285F75E273BB908009A34AD /* SignUpViewController.swift in Sources */,
@@ -707,7 +717,6 @@
 				F2C381DB273EDFA100BC22C4 /* AuthTextField.swift in Sources */,
 				F28748442770A67300E60ED6 /* HeaderView.swift in Sources */,
 				F23996F5273BB2E5007F8ADE /* SignInViewController.swift in Sources */,
-				F2442989273D97D900C685BE /* DatabaseManager.swift in Sources */,
 				F25358492770D06E0011D6F0 /* FoodSearchViewController.swift in Sources */,
 				F285F775273BC048009A34AD /* RankPageViewController.swift in Sources */,
 				F285F76B273BBFB6009A34AD /* UserDataViewController.swift in Sources */,
@@ -716,9 +725,9 @@
 				F25358482770D06E0011D6F0 /* FoodDataViewController.swift in Sources */,
 				858013172BAAD86400534318 /* DataPickerContainerView.swift in Sources */,
 				F285F777273BC051009A34AD /* SettingViewController.swift in Sources */,
-				F285F771273BC033009A34AD /* FoodDataViewsController.swift in Sources */,
 				F2464974273BE54600E2F2F6 /* PosterCollectionViewCell.swift in Sources */,
 				F224D459274A54C70057AB48 /* GameModels.swift in Sources */,
+				858013342BB4553800534318 /* SkillOneView.swift in Sources */,
 				F222E46C273C412700BB8E5D /* Int+EXT.swift in Sources */,
 				F255B5CA276B3007007FAD81 /* ResultsViewController.swift in Sources */,
 				858013192BAADB4100534318 /* DataPickerViewController.swift in Sources */,
@@ -730,6 +739,7 @@
 				F28DC71D2746DA8D0094DFD1 /* GameScene.swift in Sources */,
 				F2D11CBC275E1EAF000277C2 /* ChooseMainSkillIntroduce.swift in Sources */,
 				F293C921274413FE00FCD0AA /* ProgressBarBode.swift in Sources */,
+				8580133A2BB4576300534318 /* SkillViewController.swift in Sources */,
 				850605492B80939700FA4E85 /* AuthManager2.swift in Sources */,
 				F2304E472743946500BC8C50 /* BackButton.swift in Sources */,
 				F27D8382276FB37F0008649B /* LevelSkill3PageModelsCell.swift in Sources */,
@@ -748,6 +758,7 @@
 				F285F76D273BBFF6009A34AD /* CharacterViewController.swift in Sources */,
 				F2C381DD273EE94000BC22C4 /* AuthButton.swift in Sources */,
 				F246497E273BF8E400E2F2F6 /* PostLikeNumberCollectionViewCell.swift in Sources */,
+				858013362BB4561600534318 /* SkillTwoView.swift in Sources */,
 				F2149C4A2742547A006B5C1A /* Scene.swift in Sources */,
 				F215DCE727628A3B009D76CB /* PlainHorizontalProgressBar.swift in Sources */,
 				F28843A32770E00B004099F4 /* waterTest.swift in Sources */,
@@ -759,9 +770,9 @@
 				8506055D2BA0349D00FA4E85 /* CircleProgressBar.swift in Sources */,
 				8506055B2B9B09FA00FA4E85 /* KcalProgressBar.swift in Sources */,
 				858013202BB0236B00534318 /* KILO GO.xcdatamodeld in Sources */,
+				858013382BB4568100534318 /* SkillThreeView.swift in Sources */,
 				F23996F1273BB2E5007F8ADE /* AppDelegate.swift in Sources */,
 				F23996F3273BB2E5007F8ADE /* SceneDelegate.swift in Sources */,
-				F244298B273D980600C685BE /* StorageManager.swift in Sources */,
 				F27D837A276FA8C60008649B /* LevelSkill1PageModelsCell.swift in Sources */,
 				F2F9985A275E733D008DA346 /* ChooseMainPageMainInfo.swift in Sources */,
 				F226F70E275DF72F0081E2F5 /* LabelViewController.swift in Sources */,
@@ -769,6 +780,7 @@
 				F215DCE5276220D2009D76CB /* PlainCircularProgressBar.swift in Sources */,
 				8506054B2B86054E00FA4E85 /* RealtimeDatabaseManager.swift in Sources */,
 				F24063DA276A2E9E00498EA9 /* listBackgroundPoint.swift in Sources */,
+				858013312BB4281600534318 /* SkillView.swift in Sources */,
 				850605412B7CA4C000FA4E85 /* AuthButtonType.swift in Sources */,
 				F2464980273BF8FB00E2F2F6 /* PostLikeNumberCollectionViewModel.swift in Sources */,
 				F27D837C276FAEB10008649B /* LevelSkill2PageModels.swift in Sources */,

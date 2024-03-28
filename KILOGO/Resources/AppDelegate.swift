@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         let window = UIWindow(frame: UIScreen.main.bounds)
-        if AuthManager.shared.isLogging {
-            window.rootViewController = HomePageViewController()
-        }
-        else {
-            window.rootViewController = FirstPageViewController()
-        }
+//        if AuthManager.shared.isLogging {
+//            window.rootViewController = HomePageViewController()
+//        }
+//        else {
+//            window.rootViewController = FirstPageViewController()
+//        }
         window.makeKeyAndVisible()
         self.window = window
         return true
