@@ -35,6 +35,7 @@
 		858013362BB4561600534318 /* SkillTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013352BB4561600534318 /* SkillTwoView.swift */; };
 		858013382BB4568100534318 /* SkillThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013372BB4568100534318 /* SkillThreeView.swift */; };
 		8580133A2BB4576300534318 /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858013392BB4576300534318 /* SkillViewController.swift */; };
+		8580133D2BBA831C00534318 /* SkillContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8580133C2BBA831C00534318 /* SkillContentView.swift */; };
 		F2149C4427424DC8006B5C1A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C4327424DC8006B5C1A /* ARViewController.swift */; };
 		F2149C4827425312006B5C1A /* SKScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2149C4727425312006B5C1A /* SKScene.sks */; };
 		F2149C4A2742547A006B5C1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C492742547A006B5C1A /* Scene.swift */; };
@@ -147,6 +148,7 @@
 		858013352BB4561600534318 /* SkillTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTwoView.swift; sourceTree = "<group>"; };
 		858013372BB4568100534318 /* SkillThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillThreeView.swift; sourceTree = "<group>"; };
 		858013392BB4576300534318 /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
+		8580133C2BBA831C00534318 /* SkillContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillContentView.swift; sourceTree = "<group>"; };
 		DB8570A4D7ED3DBC8BF971C4 /* Pods-KILOGO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KILOGO.debug.xcconfig"; path = "Target Support Files/Pods-KILOGO/Pods-KILOGO.debug.xcconfig"; sourceTree = "<group>"; };
 		F2149C4327424DC8006B5C1A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		F2149C4727425312006B5C1A /* SKScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SKScene.sks; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				858013302BB4281600534318 /* SkillView.swift */,
+				8580133C2BBA831C00534318 /* SkillContentView.swift */,
 				858013332BB4553800534318 /* SkillOneView.swift */,
 				858013352BB4561600534318 /* SkillTwoView.swift */,
 				858013372BB4568100534318 /* SkillThreeView.swift */,
@@ -489,6 +492,7 @@
 		F285F764273BBEF1009A34AD /* second */ = {
 			isa = PBXGroup;
 			children = (
+				858013322BB450E800534318 /* Skill Item */,
 				8580132E2BB134F900534318 /* foodData.json */,
 				F2B01BFB2770EE8C00F80D3F /* FoodPage */,
 				F253584A2770D62B0011D6F0 /* FoodTableViewCell */,
@@ -497,6 +501,7 @@
 				F285F76E273BC01E009A34AD /* IGViewController.swift */,
 				F25358472770D06E0011D6F0 /* FoodSearchViewController.swift */,
 				F285F772273BC03D009A34AD /* HomePageViewController.swift */,
+				858013392BB4576300534318 /* SkillViewController.swift */,
 				F285F774273BC048009A34AD /* RankPageViewController.swift */,
 				F285F776273BC051009A34AD /* SettingViewController.swift */,
 				F25358462770D06E0011D6F0 /* FoodDataViewController.swift */,
@@ -510,8 +515,6 @@
 				8580131C2BB0144600534318 /* FoodDataCell.swift */,
 				8580131E2BB0236B00534318 /* KILO GO.xcdatamodeld */,
 				8580132C2BB1328C00534318 /* FoodModel.swift */,
-				858013322BB450E800534318 /* Skill Item */,
-				858013392BB4576300534318 /* SkillViewController.swift */,
 			);
 			path = second;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				F2464976273BE57F00E2F2F6 /* PostCollectionViewCell.swift in Sources */,
 				F246496C273BE29300E2F2F6 /* IGHomeFeedCellType.swift in Sources */,
 				F285F75E273BB908009A34AD /* SignUpViewController.swift in Sources */,
+				8580133D2BBA831C00534318 /* SkillContentView.swift in Sources */,
 				8580131D2BB0144600534318 /* FoodDataCell.swift in Sources */,
 				F2464970273BE36000E2F2F6 /* PosterCollecitonViewCellViewModel.swift in Sources */,
 				F285F75A273BB89E009A34AD /* TabBarViewController.swift in Sources */,
