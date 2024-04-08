@@ -9,7 +9,14 @@ import UIKit
 import AVFoundation
 
 class TabBarViewController: UITabBarController {
-
+    
+    let igVC = IGViewController()
+    let foodVC = FoodDataViewController()
+    let HomeVC = HomePageViewController()
+    let RankVC = RankPageViewController()
+    let settingVC = SettingViewController()
+    let levelVC = LevelSkillViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +28,6 @@ class TabBarViewController: UITabBarController {
     
     
     func createIgNC() -> UINavigationController {
-        let igVC = IGViewController()
         igVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "熊"), tag: 1)
         igVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         
@@ -30,7 +36,7 @@ class TabBarViewController: UITabBarController {
     
     
     func createFoodDataNC() -> UINavigationController {
-        let foodVC = FoodDataViewController()
+        foodVC.delegate = HomeVC
         foodVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "湯匙"), tag: 2)
         foodVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         
@@ -39,7 +45,6 @@ class TabBarViewController: UITabBarController {
     
     
     func createHomeNC() -> UINavigationController {
-        let HomeVC = HomePageViewController()
         HomeVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "家"), tag: 3)
         HomeVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         
@@ -48,7 +53,6 @@ class TabBarViewController: UITabBarController {
     
     
     func createRankNC() -> UINavigationController {
-        let RankVC = RankPageViewController()
         RankVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "排行榜"), tag: 4)
         RankVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         
@@ -57,7 +61,6 @@ class TabBarViewController: UITabBarController {
     
     
     func createSettingNC() -> UINavigationController {
-        let settingVC = SettingViewController()
         settingVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "設定"), tag: 5)
         settingVC.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         
@@ -66,7 +69,6 @@ class TabBarViewController: UITabBarController {
     
     
     func createLevelNC() -> UINavigationController {
-        let levelVC = LevelSkillViewController()
         
         return UINavigationController(rootViewController: levelVC)
     }

@@ -14,6 +14,10 @@ enum foodtype {
     case dinner
 }
 
+enum nilError: Error {
+    case error
+}
+
 class RealtimeDatabaseManager {
     static let shared = RealtimeDatabaseManager()
     private init() {}
@@ -70,7 +74,7 @@ class RealtimeDatabaseManager {
     }
     
     
-    func getUserFoodData(email: String, date: String, completed: @escaping((NSDictionary) -> Void)) {
+    func getUserFoodData(email: String, date: String, completed: @escaping(Result<NSDictionary, Error>) -> Void) {
         let email = email.emailEncoder()
        
         ref.child("email:\(email)").child("userData").child(date).getData { error, dataSnapshot in
@@ -80,9 +84,13 @@ class RealtimeDatabaseManager {
             }
             
             let foodData = dataSnapshot.value as? NSDictionary
-            guard let foodData = foodData else { return }
+            guard let foodData = foodData else {
+                print("RealtimeDatabaseManager: 目前選擇的日期是空值")
+                completed(.failure(nilError.error))
+                return
+            }
 //            print("這裡測試dic的取值\(foodData)")
-            completed(foodData)
+            completed(.success(foodData))
         }
     }
     

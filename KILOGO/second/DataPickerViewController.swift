@@ -11,6 +11,7 @@ protocol DataPickerViewControllerDelegate: AnyObject {
     func userDidChooseDate(date: String)
     func realTimeDataBaseDate(date: String)
     func dataPickerUpdatefoodData(data: NSDictionary)
+    func dataPickerGetNilData()
 }
 
 
@@ -81,17 +82,22 @@ class DataPickerViewController: UIViewController {
         guard date != nil else { return }
 //        dataClosure?(date)
         delegate.userDidChooseDate(date: date)
-        print("他選擇的日期是\(date)")
+        print("DataPickerViewController: 使用者選擇的日期是\(date)")
         
         let RealtimeDatabaseDate = DateFormatter()
         RealtimeDatabaseDate.dateFormat = "yyyyMMdd"
         let Ddate = RealtimeDatabaseDate.string(from: dataPickerDate)
         delegate.realTimeDataBaseDate(date: Ddate)
         
-        RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com", date: Ddate) { result in
-            self.delegate.dataPickerUpdatefoodData(data: result)
+        RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com", date: Ddate) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.delegate.dataPickerUpdatefoodData(data: data)
+            case .failure(let error):
+                self.delegate.dataPickerGetNilData()
+            }
         }
-        
         dismiss(animated: true)
     }
 }

@@ -24,11 +24,14 @@ class HomePageViewController: UIViewController {
     let circleProgressBarNew = CircleProgressBar()
     let medalImage = UIImageView()
     let kcalProgressBar = KcalProgressBar()
+    let kcalProgressBarImage = UIImageView()
+    var kcalProgressBarImageLeadingConstraint: NSLayoutConstraint!
     let kcalImage = UIImageView()
     let number = UILabel()
     let startButton = UIButton()
     let pedometerButton = UIButton()
     let levelUpButton = UIButton()
+    var currentDate: String!
     
     
     override func viewDidLoad() {
@@ -41,12 +44,14 @@ class HomePageViewController: UIViewController {
         view.addSubview(circleProgressBarNew)
         view.addSubview(medalImage)
         view.addSubview(kcalProgressBar)
-        view.addSubview(kcalProgressBar.image)
+        view.addSubview(kcalProgressBarImage)
         view.addSubview(kcalImage)
         view.addSubview(number)
         view.addSubview(startButton)
         view.addSubview(pedometerButton)
         view.addSubview(levelUpButton)
+        nowDate()
+        update(date: currentDate)
         configureBackgroundImage()
         configureMusicPlayer()
         configureHeadView()
@@ -54,6 +59,7 @@ class HomePageViewController: UIViewController {
         configureCircleView()
         configureMedalImage()
         configureCircleProgressBar()
+        configureKcalProgressBarImage()
         configureKcalImage()
         configureKcalProgressBar()
         configureNumber()
@@ -64,9 +70,42 @@ class HomePageViewController: UIViewController {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //測試 NotificationCenter.default 需不需要放這裡
+    func nowDate() {
+        let date = NSDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        currentDate = formatter.string(from: date as Date)
+    }
+    
+    
+    func update(date: String) {
+        RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com", date: date) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                let breakfast = data["早餐Kcal"] as? Int ?? 0
+                let lunch = data["午餐Kcal"] as? Int ?? 0
+                let dinner = data["晚餐Kcal"] as? Int ?? 0
+                let total = breakfast + lunch + dinner
+                let totalKcal = Float(total)
+                let cgFloat = CGFloat(totalKcal)
+                DispatchQueue.main.async {
+                    self.number.text = "\(total)/1800"
+                    self.kcalProgressBar.progress = cgFloat / 1800
+                    if cgFloat <= 500 {
+                        self.kcalProgressBarImageLeadingConstraint.constant = (cgFloat / 1800) * 180 - 30
+                    } else if cgFloat > 500 {
+                        self.kcalProgressBarImageLeadingConstraint.constant = (cgFloat / 1800) * 180 - 18
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.number.text = "\(0)/1800"
+                    self.kcalProgressBar.progress = 0 / 1800
+                    self.kcalProgressBarImageLeadingConstraint.constant = 0
+                }
+            }
+        }
     }
     
     
@@ -165,6 +204,21 @@ class HomePageViewController: UIViewController {
         ])
     }
     
+    
+    func configureKcalProgressBarImage() {
+        kcalProgressBarImage.image = UIImage(named: "火")
+        kcalProgressBarImageLeadingConstraint = kcalProgressBarImage.leadingAnchor.constraint(equalTo: kcalProgressBar.leadingAnchor, constant: 180) // min = -30 max = 180
+        
+        kcalProgressBarImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            kcalProgressBarImage.topAnchor.constraint(equalTo: kcalProgressBar.topAnchor, constant: -30),
+            kcalProgressBarImageLeadingConstraint,
+            kcalProgressBarImage.widthAnchor.constraint(equalToConstant:70),
+            kcalProgressBarImage.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        print("圖片設定被呼叫使用嘍！！！！！！！！！！！！！")
+    }
+    
 
     func configureKcalProgressBar() {
         kcalProgressBar.color = .red
@@ -184,7 +238,7 @@ class HomePageViewController: UIViewController {
     
     
     func configureNumber() {
-        number.text = "1200/1500"
+        number.text = "1200/1800"
         number.font = UIFont.systemFont(ofSize: 13)
         number.textColor = .white
         number.translatesAutoresizingMaskIntoConstraints = false
@@ -284,4 +338,28 @@ class HomePageViewController: UIViewController {
         musicPlayer.pause()
     }
     
+}
+
+
+extension HomePageViewController: foodDataViewControllerDelegate {
+    func didChangeTotalKcal(totalKcal: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.number.text = "\(totalKcal)/1800"
+
+            guard let total = Float(totalKcal) else {
+                return print("Float 轉換失敗")
+            }
+            
+            let cgFloat = CGFloat(total)
+
+            self.kcalProgressBar.progress = cgFloat / 1800
+            
+            if cgFloat <= 500 {
+                self.kcalProgressBarImageLeadingConstraint.constant = (cgFloat / 1800) * 180 - 30
+            } else if cgFloat > 500 {
+                self.kcalProgressBarImageLeadingConstraint.constant = (cgFloat / 1800) * 180 - 18
+            }
+        }
+    }
 }

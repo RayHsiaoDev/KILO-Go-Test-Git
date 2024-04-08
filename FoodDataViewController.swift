@@ -6,6 +6,11 @@
 //
 
 import UIKit
+
+protocol foodDataViewControllerDelegate: AnyObject {
+    func didChangeTotalKcal(totalKcal: String)
+}
+
  let screenWidth = UIScreen.main.bounds.size.width
  let screenHeight = UIScreen.main.bounds.size.height
 
@@ -39,6 +44,7 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
     var waveTrailingAnchor = NSLayoutConstraint()
     var waveBottomAnchor = NSLayoutConstraint()
     var currentDate: String!
+    weak var delegate: foodDataViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -329,17 +335,36 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
     func updateVC(date: String) {
         RealtimeDatabaseManager.shared.getUserFoodData(email: "godjj@gmail.com", date: date) {[weak self] result in
             guard let self = self else { return }
-            let breakfast = result["早餐Kcal"] as? Int ?? 0
-            let lunch = result["午餐Kcal"] as? Int ?? 0
-            let dinner = result["晚餐Kcal"] as? Int ?? 0
-            print("早餐kcal:\(breakfast) 午餐kcal:\(lunch) 晚餐kcal:\(dinner)")
             
-            let total = breakfast + lunch + dinner
-            DispatchQueue.main.async {
-                self.getKcalLabel.text = "\(String(total))\n攝取卡路里"
-                self.waveHeightAnchor.constant = CGFloat(total)*0.18
+            switch result {
+            case .success(let data):
+                let breakfast = data["早餐Kcal"] as? Int ?? 0
+                let lunch = data["午餐Kcal"] as? Int ?? 0
+                let dinner = data["晚餐Kcal"] as? Int ?? 0
+                print("早餐kcal:\(breakfast) 午餐kcal:\(lunch) 晚餐kcal:\(dinner)")
+                
+                let total = breakfast + lunch + dinner
+                DispatchQueue.main.async {
+                    self.getKcalLabel.text = "\(String(total))\n攝取卡路里"
+                    self.waveHeightAnchor.constant = CGFloat(total)*0.18
+                }
+                self.delegate?.didChangeTotalKcal(totalKcal: String(total))
+                print("更新！！\(date)的總卡路里\(total)")
+                
+            case .failure(let error):
+                let breakfast = 0
+                let lunch = 0
+                let dinner = 0
+                print("選擇的日期沒有資料")
+                
+                let total = breakfast + lunch + dinner
+                DispatchQueue.main.async {
+                    self.getKcalLabel.text = "\(String(total))\n攝取卡路里"
+                    self.waveHeightAnchor.constant = CGFloat(total)*0.18
+                }
+                self.delegate?.didChangeTotalKcal(totalKcal: String(total))
+                print("更新！！\(date)的總卡路里\(total)")
             }
-            print("更新！！\(date)的總卡路里\(total)")
         }
     }
     
@@ -431,16 +456,31 @@ extension FoodDataViewController: DataPickerViewControllerDelegate {
     
     
     func dataPickerUpdatefoodData(data: NSDictionary) {
-        print("接受到dataPicker的委託嘍")
-        guard let breakfast = data["早餐Kcal"] as? Int else { return }
-        guard let lunch = data["午餐Kcal"] as? Int else { return }
-        guard let dinner = data["晚餐Kcal"] as? Int else { return }
-        print("早餐kcal:\(breakfast) 午餐kcal:\(lunch) 晚餐kcal:\(dinner)")
+        print("FoodDataViewController: 有資料")
+        let breakfast = data["早餐Kcal"] as? Int ?? 0
+        let lunch = data["午餐Kcal"] as? Int ?? 0
+        let dinner = data["晚餐Kcal"] as? Int ?? 0
         let total = breakfast + lunch + dinner
-        DispatchQueue.main.async {
+        print("早餐kcal:\(breakfast) 午餐kcal:\(lunch) 晚餐kcal:\(dinner)")
+        
+        DispatchQueue.main.async {[weak self] in
+            guard let self = self else { return }
             self.getKcalLabel.text = "\(String(total))\n攝取卡路里"
             self.waveHeightAnchor.constant = CGFloat(total)*0.18
         }
+        delegate?.didChangeTotalKcal(totalKcal: String(total))
+    }
+    
+    
+    func dataPickerGetNilData() {
+        print("FoodDataViewController: 沒有資料")
+        
+        DispatchQueue.main.async {[weak self] in
+            guard let self = self else { return }
+            self.getKcalLabel.text = "\(String(0))\n攝取卡路里"
+            self.waveHeightAnchor.constant = CGFloat(0)*0.18
+        }
+        delegate?.didChangeTotalKcal(totalKcal: String(0))
     }
 }
 
