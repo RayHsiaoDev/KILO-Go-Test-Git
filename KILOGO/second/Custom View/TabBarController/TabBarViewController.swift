@@ -15,7 +15,6 @@ class TabBarViewController: UITabBarController {
     let HomeVC = HomePageViewController()
     let RankVC = RankPageViewController()
     let settingVC = SettingViewController()
-    let levelVC = LevelSkillViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,11 +65,4 @@ class TabBarViewController: UITabBarController {
         
         return UINavigationController(rootViewController: settingVC)
     }
-    
-    
-    func createLevelNC() -> UINavigationController {
-        
-        return UINavigationController(rootViewController: levelVC)
-    }
-    
 }

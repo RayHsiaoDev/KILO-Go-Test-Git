@@ -392,37 +392,6 @@ class FoodDataViewController: UIViewController, UICollectionViewDataSource {
         choosePageCollectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredHorizontally, animated: true)
         chooseButtonLineAnimation(select: 1)
     }
-    
-    
-    @objc func breakbutton(){
-        let vc = FoodSearchViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    @objc func lunchbutton(){
-        let vc = FoodSearchViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    @objc func dinnerbutton(){
-        let vc = FoodSearchViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    @objc func otherbutton(){
-        let vc = FoodSearchViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    @objc func sportbutton(){
-        let vc = FoodSearchViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }
 }
 
 
